@@ -1,0 +1,28 @@
+#tblOrder tbody{
+  background-color: white;
+}
+
+#tblOrder thead{
+  background-color: orange;
+}
+
+#tblOrder tr{
+  cursor: pointer;
+}
+
+#tblOrder tr th:first-child, #tblOrder tr td:first-child{
+  text-align: center;
+}
+
+#tblOrder tr td:last-child{
+  text-align: center;
+}
+
+#tblOrder tr td:last-child:hover{
+  color: red;
+}
+
+.selected{
+  background-color: lightgray;
+}
+

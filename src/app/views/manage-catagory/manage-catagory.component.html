@@ -1,0 +1,88 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Manage Categorie</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Manage Categorie</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-10">
+                <form #formCategorie ngForm="formCategorie">
+                  <p class="form-group">
+                    <label for="categorie_id">Categorie ID :</label>
+                    <input [disabled]="isCategorieSelected" [(ngModel)]="curruntCategorie.categorie_id" id="categorie_id" name="categorie_id" class="form-control">
+                  </p>
+
+                  <p class="form-group">
+                    <label for="description">Categorie Name :</label>
+                    <input [(ngModel)]="curruntCategorie.description" id="description" name="description" class="form-control">
+                  </p>
+
+                  <div>
+                    <button (click)="saveCategorie()" type="submit" class="btn btn-primary">Save</button>
+                    &nbsp;
+                    <button (click)="clear()" type="button" class="btn btn-warning">Clear</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        <!-- /.card -->
+      </div>
+      <div class="col-md-6">
+        <br>
+        <br>
+        <p>View All Categorie</p>
+        <table id="tblCategories" class="table table-hover">
+          <thead>
+          <tr>
+            <th>Categorie ID</th>
+            <th>Categorie Name</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let categorie of categorieList | paginate: { itemsPerPage: 7, currentPage: p }"
+              (click)="selectCategorie(categorie)"
+              [class.selected]="categorie==curruntCategorie">
+            <td>{{categorie.categorie_id}}</td>
+            <td>{{categorie.description}}</td>
+            <td>
+              <i (click)="deleteCategorie(categorie)" class="fa fa-trash fa-2x"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="4">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+

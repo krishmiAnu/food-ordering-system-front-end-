@@ -1,0 +1,143 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Manage Products</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Manage Products</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<br>
+<br>
+<!-- Main content -->
+<section class="content">
+  <div class="col-md-2"></div>
+            <div class="row">
+              <div class="col-md-8">
+                <form #formProduct ngForm="formProduct">
+                  <div class="row">
+                   <div class="col-md-12"><label for="categorie_selector">Categorie :</label></div>
+                    <div class="col-md-6"><select [(ngModel)]="categorie.categorie_id" name="categorie_selector" id="categorie_selector" class="form-control">
+                      <option *ngFor="let categorie of categorieList" [value]="categorie.categorie_id">{{ categorie.description }}</option>
+                    </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"><label for="product_id">Product ID :</label></div>
+                    <div class="col-md-6"><input [disabled]="isProductSelected" [(ngModel)]="curruntProduct.product_id" id="product_id"name="product_id"class="form-control"></div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-3"><label for="product_name">Product Name :</label></div>
+                    <div class="col-md-6"><input [(ngModel)]="curruntProduct.product_name" id="product_name"name="product_name"class="form-control"></div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-3"><label for="description">Description :</label></div>
+                    <div class="col-md-6"><input [(ngModel)]="curruntProduct.description" id="description"name="description" class="form-control"></div>
+                  </div>
+                  <br>
+                  <!--<form action="singleFileUpload"method="post"enctype="multipart/form-data">-->
+                  <div class="row">
+                    <div class="col-md-3"><label for="file">Choose File</label></div>
+                    <div class="col-md-4"><input type="file" name="file" id="file" accept="image/png, image/jpg, image/gif" (change)="setIma($event)"></div>
+                    <!--<div class="col-md-2"><button type="submit" (click)="onUpload()">Upload</button></div>-->
+                  </div>
+                  <!--</form>-->
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-7"><input type="image" id="image" name="image" class="form-control" style="height: 350px;width: 350px"></div>
+                  </div>
+                  <!--<div class="row">-->
+                    <!--<div class="col-md-3"><img [src]="url1" height="200"></div>-->
+                    <!--<div class="col-md-6"><input [(ngModel)]="curruntProduct.product_image" type="file" (change)="onSelectFile($event)" id="product_image" name="product_image" class="form-control"></div>-->
+                  <!--</div>-->
+                  <!--<br>-->
+                  <!--<div class="row">-->
+                    <!--<div class="col-md-2"></div>-->
+                    <!--<div class="col-md-2"><label for="color_selector">Color :</label></div>-->
+                    <!--<div class="col-md-4"><input (ngModelChange)="setColor($event)" [ngModel]="linkColor" type="color" id="color_selector" name="color" class="form-control"></div>-->
+                  <!--</div>-->
+                  <!--<div class="row">-->
+                    <!--<div class="col-md-2"></div>-->
+                    <!--<div class="col-md-2"><label for="size">Size :</label></div>-->
+                    <!--<div class="col-md-4"><input [(ngModel)]="curruntProduct.size" id="size" name="size" class="form-control"></div>-->
+                    <!--&lt;!&ndash;<input type="checkbox" id="color_selector"><label>red</label>&ndash;&gt;-->
+                  <!--</div>-->
+                  <br>
+                    <!--<select name="size_selector" id="size_selector" class="form-control">-->
+                      <!--<option></option>-->
+                    <!--</select>-->
+                  <div class="row">
+                    <div class="col-md-3"><label for="qtyOnHand">QtyOnHand :</label></div>
+                    <div class="col-md-6"><input [(ngModel)]="curruntProduct.quantity" id="qtyOnHand" name="qtyOnHand" class="form-control"></div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-3"><label for="unitprice">Unit Price :</label></div>
+                    <div class="col-md-6"><input [(ngModel)]="curruntProduct.unitPrice" id="unitPrice" name="unitprice" class="form-control"></div>
+                  </div>
+                  <br>
+                  <div class="row" id="color">
+                    <div class="col-md-4"></div>
+                    <button (click)="saveProduct()" type="submit" class="btn btn-success col-md-2"><i class="fa fa-save"> Save</i></button>
+                    &nbsp;
+                    <button (click)="clear() "type="button" class="btn btn-warning col-md-2"><i class="fa fa-times"> Clear</i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+  <!--<div class="col-md-1"></div>-->
+    <p>View All Products</p>
+
+    <table id="tblCategories" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Categorie</th>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>QtyOnHand</th>
+        <th>Unitprice</th>
+        <!--<th>Status</th>-->
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of productList | paginate: { itemsPerPage: 7, currentPage: p }"
+          (click)="selectProduct(product)"
+          [class.selected]="product==curruntProduct">
+        <td>{{product.categorieDTO.description}}</td>
+        <td>{{product.product_id}}</td>
+        <td>{{product.product_name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.product_image}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.unitPrice}}</td>
+        <!--<td>{{product.status}}</td>-->
+        <td>
+          <i (click)="deleteProduct(product)" class="fa fa-trash fa-2x"></i>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+</section>
+
+

@@ -1,0 +1,27 @@
+#tblCategories tbody{
+  background-color: white;
+}
+
+#tblCategories thead{
+  background-color: white;
+}
+
+#tblCategories tr{
+  cursor: pointer;
+}
+
+#tblCategories tr th:first-child, #tblCategories tr td:first-child{
+  text-align: center;
+}
+
+#tblCategories tr td:last-child{
+  text-align: center;
+}
+
+#tblCategories tr td:last-child:hover{
+  color: red;
+}
+
+.selected{
+  background-color: lightgray;
+}

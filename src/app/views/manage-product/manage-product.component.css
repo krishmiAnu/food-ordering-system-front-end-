@@ -1,0 +1,55 @@
+.col-md-3{
+  font-size: smaller;
+  font-style: italic;
+}
+.col-md-2{
+  font-size: smaller;
+  font-style: italic;
+}
+.form-group{
+  font-size: smaller;
+  font-style: italic;
+}
+.card-title{
+  /*font-size: small;*/
+  font-style: oblique;
+}
+/*#color{*/
+  /*background-color: blue;*/
+/*}*/
+/*.content-header{*/
+  /*row-span:initial;*/
+/*}*/
+#tblProducts{
+  font-size: x-small;
+}
+#tblProducts tbody{
+  background-color: white;
+}
+
+#tblProducts thead{
+  background-color: white;
+}
+
+#tblProducts tr{
+  cursor: pointer;
+}
+
+#tblProducts tr th:first-child, #tblProducts tr td:first-child{
+  text-align: center;
+}
+
+#tblProducts tr td:last-child{
+  text-align: center;
+}
+
+#tblProducts tr td:last-child:hover{
+  color: red;
+}
+
+.selected{
+  background-color: lightgray;
+}
+/*.card-header{*/
+  /*background-color: darkgray;*/
+/*}*/

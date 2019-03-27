@@ -1,0 +1,136 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Place Order</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Place Order</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-12">
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Order Information</h3>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-12">
+                <form #formPlaceOrder>
+                  <p class="form-group">
+                    <label for="customer_selector">Customer</label>
+                    <select [(ngModel)]="customer.cust_id" name="customer_selector" id="customer_selector" class="form-control">
+                      <option *ngFor="let customer of customerList" [value]="customer.cust_id">{{ customer.fullname }}</option>
+                    </select>
+                  </p>
+
+                  <p class="form-group">
+                    <label for="orderDate">Order Date</label>
+                    <input id="orderDate" name="orderDate" class="form-control" [value]="date">
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <div class="col-md-12 col-12">
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Order Detail Information</h3>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-12">
+                <form #formOrderDetail>
+                  <p class="form-group">
+                    <label for="item_selector">Item</label>
+                    <select [(ngModel)]="product.product_id" (change)="itemChange()" name="item_selector" id="item_selector" class="form-control">
+                      <option *ngFor="let product of productList" [value]="product.product_id">{{ product.product_name }}</option>
+                    </select>
+                  </p>
+
+                  <p class="form-group">
+                    <label class="col-sm-3 display-inline" >Unit Price</label>
+                    <label class="col-sm-3 display-inline float-right">Qty</label>
+                    <label class="col-sm-2 display-inline float-right">QtyOnHand</label>
+                    <label class="col-sm-5 display-inline float-right" >Selling Price(per unit)</label>
+                  </p>
+                  <p  class="form-group">
+                    <input [(ngModel)]="product.unitPrice" name="unitPrice" class="form-control col-sm-2 display-inline" disabled>
+                    <span>&nbsp;</span>
+                    <input [(ngModel)]="orderDetail.unitPrice" name="unitPrice" class="form-control col-sm-3 display-inline">
+                    <input [(ngModel)]="orderDetail.quantity" name="qty" class="form-control col-sm-3 display-inline float-right">
+                    <span class="float-right">&nbsp;</span>
+                    <input [(ngModel)]="product.quantity" name="qtyOnHand" class="form-control col-sm-2 display-inline float-right" disabled>
+                  </p>
+
+                  <div>
+                    <p class="col-lg-12">
+                      <button (click)="addOrderDetail()" type="submit" class="btn btn-primary float-right">Add Order Detail</button>
+                    </p>
+                    <p class="form-group">
+                      <label>Total Amount</label>
+                      <input name="orderDate" class="form-control" [value]="totalAmount" disabled>
+                    </p>
+                    <button (click)="placeOrder()" type="submit" class="btn btn-primary float-right">Place Order</button>
+                    <p class="float-right">&nbsp;</p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <div class="col-md-12 col-12">
+        <div class="card-header">
+          <h3 class="card-title">Order Details</h3>
+        </div>
+        <table id="tblCustomers" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Product</th>
+            <th>Unit Price</th>
+            <th>Qntity</th>
+            <th>Amount</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let orderDetail of orderDetailList">
+            <td> {{ getItemDescription(orderDetail.product_id) }}</td>
+            <td> {{ orderDetail.unitPrice }}</td>
+            <td> {{ orderDetail.quantity }}</td>
+            <td> {{ orderDetail.quantity*orderDetail.unitPrice }}</td>
+            <td (click)="removeOrderDetail(orderDetail)" >
+              <i class="fa fa-trash fa-2x"></i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+

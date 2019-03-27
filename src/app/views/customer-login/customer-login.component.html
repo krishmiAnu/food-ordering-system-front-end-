@@ -1,0 +1,33 @@
+<form #frmLogin="ngForm" action="" method="post"(ngSubmit)="login()">
+  <br>
+  <div id="tit"></div>
+  <br>
+  <br>
+  <div id="image1">
+  </div>
+  <br>
+  <br>
+  <br>
+  <div id="con" class="container">
+    <div class="loginBox">
+      <div class="glass">
+        <br>
+        <h1>Login Here</h1>
+
+        <div class="inputBox">
+          <input type="text" name="txtUserName" placeholder="User Name">
+          <span class="fa fa-user form-control-feedback"></span>
+        </div>
+        <div>
+          <input type="password" name="txtPassword" placeholder="Password">
+          <span class="fa fa-lock form-control-feedback"></span>
+          <a routerLink="/forget-password">Forgot Password</a>
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn btn-round btn-fill btn-info">Sign In</button>
+      </div>
+
+    </div>
+  </div>
+</form>

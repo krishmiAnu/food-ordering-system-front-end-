@@ -1,0 +1,176 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">View Product</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">View Products</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!--</div>-->
+      <div class="col-md-12 col-12">
+        <div class="card card-primary">
+
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="col-md-8"></div>
+            <form #formViewProduct ngForm="formViewProduct">
+            <div class="row">
+            <div class="col-md-4"><label for="customer_selector">Customer :</label></div>
+            <div class="col-md-8"><select [ngModel]="customer.cust_id" name="customer_selector" id="customer_selector" class="form-control">
+              <option *ngFor="let customer of customerList"[value]="customer.cust_id" >{{customer.email}}</option>
+            </select>
+            </div>
+            </div>
+            <p>All Products</p>
+            <table id="tblViewProduct" class="table table-bordered table-hover">
+              <thead style="background-color: orange">
+              <tr>
+                <th>ID</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>qtyOnHand</th>
+                <th>UnitPrice</th>
+                <th>QTY</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of productList | paginate: { itemsPerPage: 7, currentPage: p }"
+                  (click)="selectProduct(product)"
+                  [class.selected]="product==curruntProduct">
+                <!--<td>{{product.categorieDTO.description}}</td>-->
+                <td>{{product.product_id}}</td>
+                <td>{{product.product_image}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.product_name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.unitPrice}}</td>
+                <td><input type="number"></td>
+                <td>
+                  <i class="fa fa-times fa-2x"(click)="addCartDetail()"></i>
+                </td>
+                <td>
+                  ADD CART <i class="fa fa-shopping-cart fa-2x"(click)="saveCart()"></i>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            </form>
+          </div>
+          <!-- /.card-body -->
+
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+</section>
+<br>
+<div class="space2"style="height: 150px"></div>
+<section>
+  <div class="form-popup" id="myForm">
+    <form action="" class="form-container">
+      <h1 class="a">Login &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-times color-blue"(click)="closeForm()"></i></h1>
+      <!--<button type="submit" class="btn cancel" (click)="closeForm()">Close</button>-->
+      <br>
+      <div class="row">
+      <div class="col-md-3">
+      <label class="lable"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label class="lable"><b>Delivery Address</b></label>
+      <input type="text" placeholder="Enter DeliveryAddress" name="delivery_address" required>
+
+      <label class="lable"><b>Payment Method</b></label>
+      <input type="text" placeholder="Enter PaymentMethod" name="payment_method" required>
+
+      <label class="lable"><b>Order Date</b></label>
+      <input type="text" name="order_date" required><span>DD : MM : YYYY</span>
+
+      </div>
+      <div class="col-md-9">
+        <!--<div class="col-md-1"></div>-->
+
+        <!--<div class="row">-->
+          <!--<div class="col-md-1"><label class="lable"><b>Product Name</b></label></div>-->
+          <!--<div class="col-md-3"><input type="text" name="product_name" required></div>-->
+
+          <!--<div class="col-md-1"><label class="lable"><b>Qty ON Hand</b></label></div>-->
+          <!--<div class="col-md-3"><input type="text" name="quantityOnHand" required></div>-->
+
+          <!--<div class="col-md-1"><label class="lable"><b>Unit Price</b></label></div>-->
+          <!--<div class="col-md-3"><input type="text" name="unitPrice" required></div>-->
+        <!--</div>-->
+
+        <!--<div class="row">-->
+          <!--<div class="col-md-4"></div>-->
+          <!--<div class="col-md-1"><label class="lable"><b>Total Price</b></label></div>-->
+          <!--<div class="col-md-3"><input type="text" placeholder="Enter TotalPrice" name="total_price" required></div>-->
+
+          <!--<div class="col-md-1"><label class="lable"><b>Total Quantity</b></label></div>-->
+          <!--<div class="col-md-3"><input type="text" placeholder="Enter TotalQuantity" name="total_quantity" required></div>-->
+
+        <!--</div>-->
+
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+      <p>All Products</p>
+      <table id="tbl" class="table table-bordered table-hover">
+        <thead style="background-color: orange">
+        <tr>
+          <th>ID</th>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Description</th>
+          <th>qtyOnHand</th>
+          <th>UnitPrice</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <i class="fa fa-times fa-2x"></i>
+          </td>
+          <!--<td>-->
+            <!--ADD CART <i class="fa fa-shopping-cart fa-2x"(click)="openForm()"></i>-->
+          <!--</td>-->
+        </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-block">Check Out</button>
+    <!--</form>-->
+      </div>
+      </div>
+      </div>
+    </form>
+  </div>
+
+</section>

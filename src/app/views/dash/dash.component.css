@@ -1,0 +1,133 @@
+.image1{
+  background-color: black;
+  background-image: url("../image/imageslider4-a7bdab28d3-3ed641828f0f6bd263477501a2399b50.jpg");
+  height: 450px;
+  width: 2000px;
+  -webkit-animation-name: example ;
+  -webkit-animation-duration: 10s;
+  animation-name: example;
+  animation-duration: 30s;
+}
+@-webkit-keyframes example {
+  0% {background-image: url("../image/file-20171031-18725-120jylc.jpg")}
+  25% {background-image: url("../image/hipi1.jpg")}
+  50% {background-image: url("../image/page-banner2.jpg")}
+  100% {background-image: url("../image/imageslider4-a7bdab28d3-3ed641828f0f6bd263477501a2399b50.jpg")}
+}
+@keyframes example {
+  0%   {background-image: url("../image/file-20171031-18725-120jylc.jpg")}
+  25%  {background-image: url("../image/hipi1.jpg")}
+  50%  {background-image: url("../image/page-banner2.jpg")}
+  100% {background-image: url("../image/imageslider4-a7bdab28d3-3ed641828f0f6bd263477501a2399b50.jpg")}
+}
+.boder{
+  background-color: transparent;
+  position: absolute;
+  width: 1200px;
+  left: 90px;
+  opacity: 0.6;
+  height: 100px;
+}
+.space{
+  height: 10px;
+}
+.card{
+  height: 450px;
+  width: 1000px;
+  background-color: white;
+  position: relative;
+  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {left: 0px;}
+  to {left: 200px;}
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 200px;}
+}
+.cart1{
+  height:450px ;
+  width: 250px;
+  background-image: url("../image/new7.jpg");
+}
+
+.button1{
+  background-color: black;
+  opacity: 0.6;
+}
+.cart2{
+  height:450px ;
+  width: 250px;
+  background-image: url("../image/new4.jpg");
+  left: 290px;
+  position: absolute;
+}
+.cart3{
+  height:450px ;
+  width: 250px;
+  background-image: url("../image/Burberry1.jpg");
+  left: 580px;
+  position: absolute;
+
+}
+.cart4{
+  height:450px ;
+  width: 250px;
+  background-image: url("../image/53621fdfdb17faf0f3830454f902d821.jpg");
+  text-align: center;
+  left: 870px;
+  position: absolute;
+
+}
+.button1{
+  height: 50px;
+  width: 250px;
+}
+.black{
+  width: 1500px;
+  background-color: white;
+}
+.h1{
+  color: black;
+  font-size: 45px;
+  font-style: initial;
+  text-align: center;
+}
+#p1{
+  color: black;
+  font-style: initial;
+  text-align: center;
+}
+.space1{
+  height: 400px;
+}
+.addcart{
+  left: 210px;
+  margin-top: 10px;
+  position: absolute;
+}
+.addcart2{
+  left: 210px;
+  margin-top: 10px;
+  position: absolute;
+}
+.addcart3{
+   left: 210px;
+   margin-top: 10px;
+   position: absolute;
+ }
+.addcart4{
+  left: 210px;
+  margin-top: 10px;
+  position: absolute;
+}
+/*.wite{*/
+  /*width: 1500px;*/
+  /*height: 500px;*/
+  /*background-color: black;*/
+/*}*/
